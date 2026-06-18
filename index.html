@@ -125,8 +125,8 @@
     const passwordModal = document.getElementById('password-modal');
 
     // --- API KEY GEMINI TERSAMAR (BASE64) ---
-    // Kunci asli disembunyikan di balik encoding agar tidak terbaca langsung
-    const _geminiKey = atob("QVEuQWI4Uk42S3BQTGNPZzhSanBSYmF6cmEzMmNPa1d2VUU0QXVsM1lpeVgzUkZpWGQ0QVE=");
+    // Kunci asli disembunyikan agar tidak terbaca langsung dari source code
+    const _geminiKey = atob("QUl6YVN5RFZlS2ZGNTFVSkVsNVFHRDdXTXR5X0lLdmtfTGVVVjd3");
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${_geminiKey}`;
 
     // --- KONFIGURASI PASSWORD OWNER ---
@@ -201,7 +201,7 @@
             }
 
         } catch (error) {
-            addMessage(" Gagal terhubung ke server. Pastikan API Key benar dan internet stabil.", 'ai');
+            addMessage("❌ Gagal terhubung ke server. Pastikan koneksi internet stabil.", 'ai');
             console.error(error);
         } finally {
             setInputState(true);
