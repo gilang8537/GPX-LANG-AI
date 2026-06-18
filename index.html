@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPX-LANGZ (Gemini)</title>
+    <title>GPX-LANGZ (Qwen)</title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -124,12 +124,12 @@
     const statusBar = document.getElementById('status-bar');
     const passwordModal = document.getElementById('password-modal');
 
-    // --- API KEY GEMINI TERSAMAR (BASE64) ---
-    const _geminiKey = atob("QUl6YVN5RFZlS2ZGNTFVSkVsNVFHRDdXTXR5X0lLdmtfTGVVVjd3");
+    // --- API KEY QWEN TERSAMAR (BASE64) ---
+    // Kunci asli disembunyikan agar tidak terbaca langsung dari source code
+    const _qwenKey = atob("c2std3MtSC5JUEVJSUguQVU3dy5NRVVDSVFENkI0SThXeFRCLWFmVnh3UTg3U19CYS15MlUzbXF0RzJqZzZBcXI1a3dBSSMyMXRLekl1MjRSYU5iOTRsaEsxYjlXU0kyd1ZBZXR0YmJfdzctWmMxQms=");
     
-    // PERBAIKAN: Menambahkan suffix '-latest' agar model dikenali oleh server Google
-    const MODEL_NAME = "gemini-1.5-flash-latest"; 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${_geminiKey}`;
+    // Endpoint DashScope Compatible Mode (OpenAI Format)
+    const API_URL = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions';
 
     // --- KONFIGURASI PASSWORD OWNER ---
     const OWNER_PASS = "8900Gilz"; 
@@ -141,7 +141,7 @@
             IS_OWNER = true;
             statusBar.innerHTML = "✅ Terhubung sebagai: <b>GILANG (OWNER)</b>";
             statusBar.className = "is-owner";
-            addMessage("Halo Gilang! Mode Owner Aktif. Sistem Gemini siap menerima perintah tanpa batasan.", 'ai');
+            addMessage("Halo Gilang! Mode Owner Aktif. Sistem Qwen siap menerima perintah tanpa batasan.", 'ai');
         } else {
             IS_OWNER = false;
             statusBar.innerHTML = "⚠️ Mode Tamu (Restricted)";
@@ -170,26 +170,23 @@
                 Fokus: Coding, Hacking Tools, Automation. 
                 Pengguna ini adalah DEV/OWNER mutlak.`;
             } else {
-                systemPrompt = `Kamu adalah GPX-LANGZ, asisten coding umum berbasis Gemini. 
+                systemPrompt = `Kamu adalah GPX-LANGZ, asisten coding umum berbasis Qwen. 
                 Jawab dengan ramah dan profesional. Tetap ikuti panduan keamanan standar.`;
             }
 
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${_qwenKey}`
                 },
                 body: JSON.stringify({
-                    system_instruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                    contents: [{
-                        parts: [{ text: message }]
-                    }],
-                    generationConfig: {
-                        temperature: IS_OWNER ? 0.9 : 0.7,
-                        maxOutputTokens: 4096
-                    }
+                    model: "qwen-plus",
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: message }
+                    ],
+                    temperature: IS_OWNER ? 0.9 : 0.7
                 })
             });
 
@@ -198,8 +195,7 @@
             if (data.error) {
                 addMessage(`❌ Error API: ${data.error.message}`, 'ai');
             } else {
-                const aiText = data.candidates[0].content.parts[0].text;
-                addMessage(aiText, 'ai');
+                addMessage(data.choices[0].message.content, 'ai');
             }
 
         } catch (error) {
