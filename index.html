@@ -125,9 +125,11 @@
     const passwordModal = document.getElementById('password-modal');
 
     // --- API KEY GEMINI TERSAMAR (BASE64) ---
-    // Kunci asli disembunyikan agar tidak terbaca langsung dari source code
     const _geminiKey = atob("QUl6YVN5RFZlS2ZGNTFVSkVsNVFHRDdXTXR5X0lLdmtfTGVVVjd3");
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${_geminiKey}`;
+    
+    // PERBAIKAN: Menambahkan suffix '-latest' agar model dikenali oleh server Google
+    const MODEL_NAME = "gemini-1.5-flash-latest"; 
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${_geminiKey}`;
 
     // --- KONFIGURASI PASSWORD OWNER ---
     const OWNER_PASS = "8900Gilz"; 
