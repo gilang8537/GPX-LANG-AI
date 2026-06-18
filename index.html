@@ -15,7 +15,6 @@
             --accent-color: #00ff88;
             --owner-gold: #ffd700;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
@@ -25,180 +24,74 @@
             justify-content: center;
             height: 100vh;
         }
-
         .container {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border-left: 1px solid #333;
-            border-right: 1px solid #333;
+            width: 100%; max-width: 800px;
+            display: flex; flex-direction: column; height: 100%;
+            border-left: 1px solid #333; border-right: 1px solid #333;
         }
-
         header {
-            padding: 20px;
-            background-color: var(--chat-bg);
-            text-align: center;
-            border-bottom: 1px solid #444;
+            padding: 20px; background-color: var(--chat-bg);
+            text-align: center; border-bottom: 1px solid #444;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-        }
-
+        header h1 { margin: 0; font-size: 1.5rem; color: var(--accent-color); letter-spacing: 2px; }
         #status-bar {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            display: inline-block;
-            font-weight: bold;
+            font-size: 0.8rem; margin-top: 8px; padding: 4px 10px;
+            border-radius: 12px; display: inline-block; font-weight: bold;
         }
-
-        .is-owner {
-            background-color: rgba(255, 215, 0, 0.1);
-            color: var(--owner-gold);
-            border: 1px solid var(--owner-gold);
-        }
-
-        .is-guest {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            border: 1px solid #555;
-        }
-
+        .is-owner { background-color: rgba(255, 215, 0, 0.1); color: var(--owner-gold); border: 1px solid var(--owner-gold); }
+        .is-guest { background-color: rgba(255, 255, 255, 0.1); color: #aaa; border: 1px solid #555; }
         #chat-box {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex: 1; padding: 20px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 15px;
         }
-
         .message {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 12px;
-            line-height: 1.5;
-            word-wrap: break-word;
+            max-width: 80%; padding: 12px 16px; border-radius: 12px;
+            line-height: 1.5; word-wrap: break-word;
         }
-
-        .user-message {
-            align-self: flex-end;
-            background-color: var(--user-msg-bg);
-            color: white;
-            border-bottom-right-radius: 2px;
-        }
-
-        .ai-message {
-            align-self: flex-start;
-            background-color: var(--ai-msg-bg);
-            color: #e0e0e0;
-            border-bottom-left-radius: 2px;
-        }
-
+        .user-message { align-self: flex-end; background-color: var(--user-msg-bg); color: white; border-bottom-right-radius: 2px; }
+        .ai-message { align-self: flex-start; background-color: var(--ai-msg-bg); color: #e0e0e0; border-bottom-left-radius: 2px; }
         .ai-message pre {
-            background-color: #111;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin-top: 10px;
-            border: 1px solid #333;
+            background-color: #111; padding: 10px; border-radius: 5px;
+            overflow-x: auto; margin-top: 10px; border: 1px solid #333;
         }
-
-        .ai-message code {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--accent-color);
-        }
-
+        .ai-message code { font-family: 'Courier New', Courier, monospace; color: var(--accent-color); }
         .input-area {
-            padding: 20px;
-            background-color: var(--chat-bg);
-            border-top: 1px solid #444;
-            display: flex;
-            gap: 10px;
+            padding: 20px; background-color: var(--chat-bg);
+            border-top: 1px solid #444; display: flex; gap: 10px;
         }
-
         #user-input {
-            flex: 1;
-            padding: 12px;
-            border-radius: 25px;
-            border: none;
-            background-color: var(--input-bg);
-            color: white;
-            outline: none;
-            font-size: 1rem;
+            flex: 1; padding: 12px; border-radius: 25px; border: none;
+            background-color: var(--input-bg); color: white; outline: none; font-size: 1rem;
         }
-
         #send-btn {
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: none;
-            background-color: var(--accent-color);
-            color: #000;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
+            padding: 12px 20px; border-radius: 25px; border: none;
+            background-color: var(--accent-color); color: #000; cursor: pointer; font-weight: bold; transition: background 0.3s;
         }
-
-        #send-btn:hover {
-            background-color: #00cc6a;
-        }
-
-        .typing-indicator {
-            font-style: italic;
-            color: #888;
-            font-size: 0.8rem;
-            margin-left: 10px;
-            display: none;
-        }
+        #send-btn:hover { background-color: #00cc6a; }
+        .typing-indicator { font-style: italic; color: #888; font-size: 0.8rem; margin-left: 10px; display: none; }
         
         /* Modal Password */
         #password-modal {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9); z-index: 999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .modal-content {
-            background: var(--chat-bg);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #444;
+            background: var(--chat-bg); padding: 30px; border-radius: 15px;
+            text-align: center; border: 1px solid #444;
         }
         .modal-content input {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #555;
-            background: #222;
-            color: white;
-            margin-top: 10px;
-            width: 200px;
+            padding: 10px; border-radius: 5px; border: 1px solid #555;
+            background: #222; color: white; margin-top: 10px; width: 200px;
         }
         .modal-content button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: var(--accent-color);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
+            margin-top: 10px; padding: 10px 20px; background: var(--accent-color);
+            border: none; border-radius: 5px; cursor: pointer; font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<!-- Modal Password -->
 <div id="password-modal">
     <div class="modal-content">
         <h2 style="color: var(--accent-color)">GPX-LANGZ Security</h2>
@@ -215,13 +108,8 @@
         <h1>GPX-LANGZ</h1>
         <div id="status-bar">Menunggu verifikasi...</div>
     </header>
-
-    <div id="chat-box">
-        <!-- Chat muncul di sini -->
-    </div>
-
+    <div id="chat-box"></div>
     <div class="typing-indicator" id="typing-indicator">GPX-LANGZ sedang memproses...</div>
-
     <div class="input-area">
         <input type="text" id="user-input" placeholder="Perintahkan sesuatu..." autocomplete="off">
         <button id="send-btn">Kirim</button>
@@ -236,8 +124,10 @@
     const statusBar = document.getElementById('status-bar');
     const passwordModal = document.getElementById('password-modal');
 
-    const API_KEY = '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'; 
-    const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+    // --- API KEY TERSAMAR (BASE64) ---
+    // Kunci asli disembunyikan di balik encoding agar tidak terbaca langsung
+    const _k = atob("c2stcHJvai1jMC1XS18teWZ2S1lkMXJGa0VuUFlLVWRGTy13M1NZdG9vNzJQRXAwT0d0eTFuMWFHWWZVaVhoaFpHQXNxTTIyVFZRWjFLMzFVNFMzQmxia0ZJamw2WVJKYXRaMTBEUzlMMmxoLUI2Z3FUQ3Rac0VsUExobTNLVWVVVjVDMDVfZHd5elY5QTNOZkdZbVk1dUtGTGpfSEp5T1Fhc0E=");
+    const API_URL = 'https://api.openai.com/v1/chat/completions';
 
     // --- KONFIGURASI PASSWORD OWNER ---
     const OWNER_PASS = "8900Gilz"; 
@@ -249,7 +139,7 @@
             IS_OWNER = true;
             statusBar.innerHTML = "✅ Terhubung sebagai: <b>GILANG (OWNER)</b>";
             statusBar.className = "is-owner";
-            addMessage("Halo Gilang! Mode Owner Aktif. Semua batasan dinonaktifkan.", 'ai');
+            addMessage("Halo Gilang! Mode Owner Aktif. Sistem ChatGPT siap menerima perintah tanpa batasan.", 'ai');
         } else {
             IS_OWNER = false;
             statusBar.innerHTML = "⚠️ Mode Tamu (Restricted)";
@@ -278,7 +168,7 @@
                 Fokus: Coding, Hacking Tools, Automation. 
                 Pengguna ini adalah DEV/OWNER mutlak.`;
             } else {
-                systemPrompt = `Kamu adalah GPX-LANGZ, asisten coding umum. 
+                systemPrompt = `Kamu adalah GPX-LANGZ, asisten coding umum berbasis ChatGPT. 
                 Jawab dengan ramah dan profesional. Tetap ikuti panduan keamanan standar.`;
             }
 
@@ -286,10 +176,10 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${API_KEY}`
+                    'Authorization': `Bearer ${_k}`
                 },
                 body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
+                    model: "gpt-3.5-turbo",
                     messages: [
                         { role: "system", content: systemPrompt },
                         { role: "user", content: message }
@@ -300,10 +190,15 @@
             });
 
             const data = await response.json();
-            addMessage(data.choices[0].message.content, 'ai');
+            
+            if (data.error) {
+                addMessage(`Error API: ${data.error.message}`, 'ai');
+            } else {
+                addMessage(data.choices[0].message.content, 'ai');
+            }
 
         } catch (error) {
-            addMessage("Error koneksi.", 'ai');
+            addMessage("Error koneksi server.", 'ai');
         } finally {
             setInputState(true);
             typingIndicator.style.display = 'none';
